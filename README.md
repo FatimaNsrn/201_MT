@@ -1,6 +1,6 @@
-# English-Persian Machine Translation Project
+# 201 Project 4
 
-This project explores various Machine Translation (MT) architectures for translating English text into Persian. It compares the performance of custom RNN-based models against state-of-the-art pre-trained Transformers and Large Language Models.
+This project is about Machine Translation from persian to english and to do so we use various algorithms and we assess their performance using various metrics.
 
 ## Dataset
 
