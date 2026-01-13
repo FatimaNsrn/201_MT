@@ -40,3 +40,5 @@ Models are evaluated using standard translation metrics:
 -   **BLEU:** Measures n-gram overlap with reference translations.
 -   **chrF++:** Character-level F-score, useful for morphologically rich languages like Persian.
 -   **BERTScore:** Computes semantic similarity using BERT embeddings, capturing meaning rather than just exact matches.
+
+  ![Results](Results.png)
