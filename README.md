@@ -41,4 +41,32 @@ Models are evaluated using standard translation metrics:
 -   **chrF++:** Character-level F-score, useful for morphologically rich languages like Persian.
 -   **BERTScore:** Computes semantic similarity using BERT embeddings, capturing meaning rather than just exact matches.
 
-  ![Results](Results.png)
+  | Model / Method | Setup | BLEU | CHRF++ | BERTScore |
+|---------------|-------|------|--------|-----------|
+| SMT | Direct | 5.05 | 23.73 | 0.74 |
+| BiLSTM | Direct | 0.24 | — | — |
+| GRU + Attention | Direct | 8.12 | 25.36 | 0.70 |
+| mBART50 | Pretrained NMT | 29.60 | — | — |
+| NLLB | Direct (Persian → French) | 38.03 | 65.65 | 0.96 |
+| NLLB | Pivot (English as intermediate) | 40.03 | 66.97 | 0.9635 |
+| LLaMA 3.2 | LLM-based | 0.0044 | 7.6 | 0.63 |
+
+### Results Analysis
+
+The pivot-based approach using **NLLB** outperformed all other models across BLEU, CHRF++, and BERTScore.
+
+Using **English as a pivot language** led to:
+- Improved fluency in the target language
+- Better semantic alignment between source and target sentences
+- Reduced ambiguity in low-resource Persian–French translation
+
+However, it is important to note that **NLLB was evaluated under different conditions** compared to other models in this project:
+
+- NLLB is a **large-scale multilingual model** trained on extensive parallel corpora across many languages.
+- The evaluation data and training setup for NLLB **differ from the dataset used for SMT and neural models**.
+- Therefore, the results of NLLB should be interpreted as a **reference upper bound**, rather than a strictly fair comparison.
+
+Additionally, while pivot translation improves translation quality, it introduces:
+- Extra computational cost due to an additional translation step
+- Increased inference time and system complexity
+
