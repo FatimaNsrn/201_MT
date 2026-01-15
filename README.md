@@ -53,20 +53,9 @@ Models are evaluated using standard translation metrics:
 
 ### Results Analysis
 
-The pivot-based approach using **NLLB** outperformed all other models across BLEU, CHRF++, and BERTScore.
+Among models trained and evaluated on the same dataset, **neural approaches outperformed SMT**.  
+The **GRU with Attention** improved over basic recurrent models due to its gating mechanism, but **pretrained models such as mBART50 achieved significantly higher BLEU scores**, demonstrating the benefit of large-scale pretraining.
 
-Using **English as a pivot language** led to:
-- Improved fluency in the target language
-- Better semantic alignment between source and target sentences
-- Reduced ambiguity in low-resource Persian–French translation
+Results from **NLLB** are reported separately and are not directly comparable, as they were obtained using a different dataset and training setup. The pivot-based NLLB approach (Persian → English → French) showed improved translation quality, suggesting that **English serves as an effective intermediary language** by reducing ambiguity and improving semantic alignment, at the cost of increased computational complexity.
 
-However, it is important to note that **NLLB was evaluated under different conditions** compared to other models in this project:
-
-- NLLB is a **large-scale multilingual model** trained on extensive parallel corpora across many languages.
-- The evaluation data and training setup for NLLB **differ from the dataset used for SMT and neural models**.
-- Therefore, the results of NLLB should be interpreted as a **reference upper bound**, rather than a strictly fair comparison.
-
-Additionally, while pivot translation improves translation quality, it introduces:
-- Extra computational cost due to an additional translation step
-- Increased inference time and system complexity
 
